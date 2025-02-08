@@ -1,0 +1,7 @@
+streamlit
+transformers
+tensorflow
+nltk
+tf-keras
+requests
+huggingface_hub
