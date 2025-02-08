@@ -3,6 +3,7 @@ import streamlit as st
 from huggingface_hub import InferenceClient
 
 # Get your Hugging Face API key from the environment variable
+HUGGING_FACE_API_KEY = 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
 HUGGING_FACE_API_KEY = os.getenv("HUGGING_FACE_API_KEY")
 
 if HUGGING_FACE_API_KEY is None:
