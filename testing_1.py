@@ -5,7 +5,10 @@ from huggingface_hub import InferenceClient
 # Get your Hugging Face API key from the environment variable
 HUGGING_FACE_API_KEY = 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
 HUGGING_FACE_API_KEY = os.getenv("HUGGING_FACE_API_KEY")
+# model used from hugging face name mistralai/Mistral-Small-24B-Instruct-2501
 
+# to access it u an refer  link given below:
+#  https://huggingface.co/mistralai/Mistral-Small-24B-Instruct-2501
 if HUGGING_FACE_API_KEY is None:
     st.error("Please set the HUGGING_FACE_API_KEY environment variable.")
     st.stop()  # Stop execution if API key is missing
