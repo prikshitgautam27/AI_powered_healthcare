@@ -1,7 +1,10 @@
-streamlit
+
 transformers
 tensorflow
-nltk
-tf-keras
-requests
-huggingface_hub
+
+langchain-huggingface
+langchain-core
+langchain-community
+streamlit
+faiss-cpu
+pypdf
