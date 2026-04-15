@@ -39,31 +39,40 @@ AI Powered Healthcare is a sophisticated Retrieval-Augmented Generation (RAG) ch
 
 ## Project Structure 
 
-AI_powered_healthcare/
-│
-├── data/                          # Input PDF documents directory
-│   ├── document1.pdf
-│   ├── document2.pdf
-│   └── ...
-│
-├── vectorstore/                   # Vector database storage
-│   └── db_faiss/                 # FAISS index files
-│       ├── index.faiss
-│       └── index.pkl
-│
-├── connect_memory.py              # Vector store creation script
-│   └── Functions: PDF loading, chunking, embedding, FAISS indexing
-│
-├── create_memory.py               # Streamlit web application
-│   └── Features: Chat UI, LLM integration, response generation
-│
-├── medibot.py                     # Command-line interface
-│   └── Features: CLI queries, RAG response generation
-│
-├── requirements.txt               # Python dependencies
-│
-└── README.md                      # Documentation (this file)
----
+## File Organization
+
+| Location | Component | Function |
+|----------|-----------|----------|
+| `data/` | Input Documents | Stores PDF files for knowledge base |
+| `vectorstore/db_faiss/` | Vector Database | Stores FAISS index and metadata |
+| `connect_memory.py` | Processing | Loads PDFs, generates embeddings, builds FAISS index |
+| `create_memory.py` | Web Interface | Streamlit application with chat UI |
+| `medibot.py` | CLI Interface | Command-line chatbot interaction |
+| `requirements.txt` | Dependencies | Python package requirements |
+
+## File Descriptions
+
+### connect_memory.py
+- Loads PDF documents from `data/` directory
+- Splits documents into text chunks
+- Generates vector embeddings
+- Creates and stores FAISS index in `vectorstore/db_faiss/`
+
+### create_memory.py
+- Main Streamlit web application
+- Loads LLM and vector store
+- Manages chat interface
+- Generates context-aware responses
+
+### medibot.py
+- Command-line interface for RAG chatbot
+- Processes user queries
+- Retrieves relevant documents
+- Generates responses using Mistral LLM
+
+### requirements.txt
+- Lists all Python package dependencies
+- Includes: streamlit, faiss, langchain, huggingface, etc.
 
 ## Prerequisites
 
