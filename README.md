@@ -96,7 +96,7 @@ Before setting up the project, ensure you have:
 ```bash
 git clone https://github.com/prikshitgautam27/AI_powered_healthcare.git
 cd AI_powered_healthcare
-```bash
+bash```
 ### Step2 
 # Create virtual environment
 python -m venv venv
