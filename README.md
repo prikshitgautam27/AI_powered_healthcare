@@ -133,7 +133,7 @@ python connect_memory.py
 ##USAGE
 streamlit run create_memory.py(option1)
 python medibot.py(option2)
----
+
 Contributinns
 Welcome contributions! To contribute:
 
