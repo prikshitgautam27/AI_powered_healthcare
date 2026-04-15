@@ -1,102 +1,167 @@
-# AI_powered_healthcare
-🤖 RAG Chatbot with Mistral and FAISS
-This project implements a Retrieval-Augmented Generation (RAG) chatbot that leverages the Mistral-7B-Instruct-v0.3 Large Language Model (LLM) and FAISS for efficient similarity search. The chatbot can answer questions based on information extracted from your provided PDF documents. It features a user-friendly Streamlit interface for interactive conversations.
+# AI Powered Healthcare - RAG Chatbot
 
-✨ Features
-Retrieval-Augmented Generation (RAG): Combines the power of an LLM with information retrieved from your documents to provide accurate and context-aware answers.
+## Overview
 
-Mistral-7B-Instruct-v0.3: Utilizes the Mistral LLM via Hugging Face for powerful text generation.
+AI Powered Healthcare is a sophisticated Retrieval-Augmented Generation (RAG) chatbot system that combines the power of the Mistral-7B-Instruct-v0.3 Large Language Model with FAISS for efficient similarity search. This intelligent system processes medical documents and provides accurate, context-aware responses to healthcare-related queries.
 
-FAISS Integration: Employs FAISS (Facebook AI Similarity Search) for fast and efficient vector similarity search, enabling quick retrieval of relevant document chunks.
+---
 
-Streamlit UI: Provides an intuitive web interface for seamless interaction with the chatbot.
+## Technology Stack
 
-PDF Document Processing: Capable of loading and processing multiple PDF files to create a searchable knowledge base.
+| Technology | Purpose |
+|-----------|---------|
+| **Mistral-7B-Instruct-v0.3** | Advanced language model for intelligent text generation |
+| **FAISS** | Facebook AI Similarity Search for fast vector retrieval |
+| **Streamlit** | Interactive web interface and user dashboard |
+| **Hugging Face** | Model hosting and API integration |
+| **LangChain** | Framework for RAG pipeline orchestration |
+| **PyPDF2** | PDF document processing and extraction |
 
-Custom Prompt Template: Allows for flexible control over the LLM's response generation based on the provided context.
+---
 
-🚀 Getting Started
-Follow these steps to set up and run the RAG Chatbot.
+## Key Features
 
-Prerequisites
-Python 3.8+
+### Core Capabilities
+- **Retrieval-Augmented Generation (RAG)**: Combines LLM capabilities with document retrieval for accurate, context-aware responses
+- **Advanced Language Model**: Leverages Mistral-7B-Instruct-v0.3 for sophisticated text generation
+- **Fast Vector Search**: FAISS integration enables quick retrieval of relevant document chunks from large knowledge bases
+- **Intuitive Web Interface**: Streamlit-based UI for seamless user interaction
+- **Multi-Document Processing**: Handles multiple PDF files to build comprehensive knowledge bases
+- **Customizable Prompts**: Flexible prompt templates for controlled response generation
 
-A Hugging Face API Token. You can obtain one from your Hugging Face profile settings.
+### Additional Benefits
+- PDF document handling and intelligent chunking
+- Efficient vector embedding generation
+- Real-time query processing
+- Contextual answer generation based on provided documents
 
-Installation
-Clone the repository:
+---
 
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+## Project Structure 
 
-Create a virtual environment (recommended):
+AI_powered_healthcare/
+│
+├── data/                          # Input PDF documents directory
+│   ├── document1.pdf
+│   ├── document2.pdf
+│   └── ...
+│
+├── vectorstore/                   # Vector database storage
+│   └── db_faiss/                 # FAISS index files
+│       ├── index.faiss
+│       └── index.pkl
+│
+├── connect_memory.py              # Vector store creation script
+│   └── Functions: PDF loading, chunking, embedding, FAISS indexing
+│
+├── create_memory.py               # Streamlit web application
+│   └── Features: Chat UI, LLM integration, response generation
+│
+├── medibot.py                     # Command-line interface
+│   └── Features: CLI queries, RAG response generation
+│
+├── requirements.txt               # Python dependencies
+│
+└── README.md                      # Documentation (this file)
+---
 
+## Prerequisites
+
+Before setting up the project, ensure you have:
+
+- **Python 3.8 or higher** - Core programming language
+- **Hugging Face API Token** - Access to Mistral-7B model
+- **Git** - Version control
+- **pip** - Python package manager
+- **4GB+ RAM** - For model inference
+- **Internet connection** - For downloading models and dependencies
+
+**Note**: Obtain your Hugging Face API token from [Hugging Face Profile Settings](https://huggingface.co/settings/tokens)
+
+---
+
+## Installation Guide
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/prikshitgautam27/AI_powered_healthcare.git
+cd AI_powered_healthcare
+### Step2 
+# Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-Install the dependencies:
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
 
+# On macOS/Linux:
+source venv/bin/activate
+
+### Step 3 : Install Dependencies
 pip install -r requirements.txt
 
-Setup
-Place your PDF documents:
-Create a directory named data in the root of your project and place all the PDF files you want the chatbot to learn from inside this directory.
+### Step 4: Configure Hugging face token
 
-your-repo-name/
+# On Windows (Command Prompt):
+set HF_TOKEN=hf_YOUR_HUGGINGFACE_TOKEN
+
+# On Windows (PowerShell):
+$env:HF_TOKEN = "hf_YOUR_HUGGINGFACE_TOKEN"
+
+# On macOS/Linux:
+export HF_TOKEN="hf_YOUR_HUGGINGFACE_TOKEN"
+
+
+### Prepare Documents
+AI_powered_healthcare/
 ├── data/
-│   ├── document1.pdf
-│   └── document2.pdf
+│   ├── medical_document1.pdf
+│   ├── medical_document2.pdf
+│   └── medical_document3.pdf
+├── vectorstore/
 ├── connect_memory.py
 ├── create_memory.py
 ├── medibot.py
-└── requirements.txt
+├── requirements.txt
+└── README.md
 
-Set your Hugging Face API Token:
-The application requires your Hugging Face API token to access the Mistral LLM. Set it as an environment variable:
-
-export HF_TOKEN="hf_YOUR_HUGGINGFACE_TOKEN"
-
-Replace "hf_YOUR_HUGGINGFACE_TOKEN" with your actual token. For persistent setting, add this line to your .bashrc, .zshrc, or equivalent profile file.
-
-Create the Vector Store:
-This step processes your PDF documents, creates text chunks, generates embeddings, and stores them in a FAISS vector database.
-
+### step6: build Vector DB
 python connect_memory.py
 
-This will create a vectorstore/db_faiss directory containing your vector database.
 
-💡 Usage
-You can interact with the chatbot in two ways: via a Streamlit web application or directly through the command line.
+##USAGE
+streamlit run create_memory.py(option1)
+python medibot.py(option2)
+---
+Contributinns
+Welcome contributions! To contribute:
 
-🌐 Streamlit Web Application (Recommended)
-To launch the interactive chatbot UI:
+Fork the repository
+Create a feature branch (git checkout -b feature/YourFeature)
+Commit changes (git commit -m 'Add YourFeature')
+Push to branch (git push origin feature/YourFeature)
+Open a Pull Request
+##Contribution Guidelines
+Follow PEP 8 style guide
+Add documentation for new features
+Test thoroughly before submitting PR
+Include clear commit messages
+License
+This project is licensed under the MIT License. See the LICENSE file for complete details.
 
-streamlit run create_memory.py
+Summary: You are free to use, modify, and distribute this software with attribution.
 
-This will open the Streamlit application in your web browser, usually at http://localhost:8501. You can then type your questions in the chat interface.
+Support & Documentation
+For additional help:
 
-💻 Command Line Interface (CLI)
-For direct interaction via the terminal:
+Review the Mistral Documentation
+Check FAISS GitHub Repository
+Visit Streamlit Documentation
+Consult Hugging Face Docs
+Authors
+Prikshit Gautam
 
-python medibot.py
-
-The script will prompt you to "Write Query Here: ". Enter your question, and the chatbot will provide a response.
-
-📁 Project Structure
-data/: Directory to store your input PDF documents.
-
-vectorstore/db_faiss/: Directory where the FAISS vector database is stored after processing.
-
-connect_memory.py: Script responsible for loading PDF documents, splitting them into chunks, generating embeddings, and building the FAISS vector store.
-
-create_memory.py: The main script for the Streamlit web application. It sets up the LLM, loads the vector store, and handles the chat interface.
-
-medibot.py: A command-line interface script for direct interaction with the RAG model.
-
-requirements.txt: Lists all the Python dependencies required to run the project.
-
-🤝 Contributing
-Contributions are welcome! If you have suggestions for improvements or new features, please feel free to open an issue or submit a pull request.
-
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details (you might need to create this file if it doesn't exist).
+GitHub: @prikshitgautam27
+Disclaimer
+This healthcare chatbot is designed for informational purposes only and should not be used as a substitute for professional medical advice. Always consult qualified healthcare professionals for medical concerns.
