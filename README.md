@@ -1,10 +1,10 @@
-# 🏥 AI Powered Healthcare — RAG Chatbot
+#  AI Powered Healthcare — RAG Chatbot
 
 > An intelligent Retrieval-Augmented Generation (RAG) chatbot that combines **Mistral-7B-Instruct-v0.3** with **FAISS** vector search to deliver accurate, context-aware responses to healthcare queries from medical documents.
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Overview](#overview)
 - [Technology Stack](#technology-stack)
@@ -19,13 +19,13 @@
 
 ---
 
-## 🔍 Overview
+##  Overview
 
 AI Powered Healthcare is a sophisticated RAG-based chatbot system that processes medical PDF documents, builds a FAISS vector index, and provides intelligent, document-grounded answers to healthcare-related queries — all via a clean Streamlit web interface or a CLI.
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 | Technology | Purpose |
 |---|---|
@@ -38,7 +38,7 @@ AI Powered Healthcare is a sophisticated RAG-based chatbot system that processes
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 - **Retrieval-Augmented Generation (RAG)** — Combines LLM capabilities with document retrieval for accurate, grounded responses
 - **Mistral-7B LLM** — Leverages a state-of-the-art instruction-tuned model for sophisticated text generation
@@ -50,7 +50,7 @@ AI Powered Healthcare is a sophisticated RAG-based chatbot system that processes
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 AI_powered_healthcare/
@@ -78,7 +78,7 @@ AI_powered_healthcare/
 
 ---
 
-## ✅ Prerequisites
+##  Prerequisites
 
 Before setting up the project, ensure you have the following:
 
@@ -91,7 +91,7 @@ Before setting up the project, ensure you have the following:
 
 ---
 
-## 🚀 Installation
+##  Installation
 
 ### Step 1 — Clone the Repository
 
@@ -153,7 +153,7 @@ This processes all PDFs, generates embeddings, and stores the FAISS index in `ve
 
 ---
 
-## 💬 Usage
+##  Usage
 
 ### Option 1 — Streamlit Web Interface (Recommended)
 
@@ -171,7 +171,7 @@ python medibot.py
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! To get started:
 
@@ -199,7 +199,7 @@ Contributions are welcome! To get started:
 
 ---
 
-## 📚 Useful Resources
+##  Useful Resources
 
 | Resource | Link |
 |---|---|
@@ -210,7 +210,7 @@ Contributions are welcome! To get started:
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for complete details.
 
@@ -218,13 +218,13 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 ---
 
-## ✍️ Author
+##  Author
 
 **Prikshit Gautam**
 GitHub: [@prikshitgautam27](https://github.com/prikshitgautam27)
 
 ---
 
-## ⚠️ Disclaimer
+##  Disclaimer
 
 This healthcare chatbot is designed **for informational purposes only** and should **not** be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for any medical concerns.
