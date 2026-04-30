@@ -1,7 +1,7 @@
-# 🏥 Healthcare RAG Chatbot
+#  Healthcare RAG Chatbot
 ### Powered by Gale Encyclopedia + HuggingFace + Streamlit
 #### ACCESS: https://pgautam-healthcare-limited.streamlit.app/
-## 📁 Project Structure
+##  Project Structure
 ```
 healthcare_rag_chatbot/
 │
@@ -18,7 +18,7 @@ healthcare_rag_chatbot/
 └── README.md
 ```
 
-## 🚀 Setup & Run
+##  Setup & Run
 
 ### 1. Clone / setup project
 ```bash
@@ -56,7 +56,7 @@ streamlit run app.py
 2. Go to [share.streamlit.io](https://share.streamlit.io)
 3. Connect your repo → set `app.py` as entry point
 4. Add secrets if needed in Streamlit Cloud dashboard
-5. Deploy! ✅
+5. Deploy! 
 
 ## 📌 Notes
 - First run downloads models (~500MB). Subsequent runs use cache.
