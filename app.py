@@ -42,7 +42,7 @@ if "auth_success"not in st.session_state: st.session_state.auth_success= ""
 
 # ── If already logged in, redirect ───────────────────────
 if st.session_state.logged_in:
-    st.switch_page("1_Home.py")
+    st.switch_page("pages/1_Home.py")
 
 # ── Full-page CSS ─────────────────────────────────────────
 st.markdown("""
