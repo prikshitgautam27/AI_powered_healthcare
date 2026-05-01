@@ -81,9 +81,9 @@ st.markdown("""
 if st.session_state.logged_in:
     st.markdown(f'<div class="suc">Signed in as <strong>{st.session_state.username}</strong>. Navigate using the links below.</div>', unsafe_allow_html=True)
     st.markdown('<div class="nav-card"><div class="nav-title">Go to</div><div class="nav-links">', unsafe_allow_html=True)
-    st.page_link("pages/1_Home.py",    label="Home — Dashboard",      icon="○")
-    st.page_link("pages/2_Query.py",   label="Query — Ask a question", icon="◇")
-    st.page_link("pages/3_Metrics.py", label="Metrics — Performance",  icon="△")
+    st.page_link("pages/1_Home.py",    label="Home — Dashboard",      icon="🏠")
+    st.page_link("pages/2_Query.py",   label="Query — Ask a question", icon="🔍")
+    st.page_link("pages/3_Metrics.py", label="Metrics — Performance",  icon="📊")
     st.markdown('</div></div>', unsafe_allow_html=True)
     if st.button("Sign Out"):
         st.session_state.logged_in=False; st.session_state.username=""; st.rerun()

@@ -68,9 +68,9 @@ with st.sidebar:
         <div style="font-size:0.65rem;color:#2A3A48;letter-spacing:0.14em;text-transform:uppercase;">Metrics</div>
     </div>""", unsafe_allow_html=True)
     st.markdown("---")
-    st.page_link("pages/1_Home.py",   label="Home",    icon="○")
-    st.page_link("pages/2_Query.py",  label="Query",   icon="◇")
-    st.page_link("pages/3_Metrics.py",label="Metrics", icon="△")
+    st.page_link("pages/1_Home.py",   label="Home",    icon="🏠")
+    st.page_link("pages/2_Query.py",  label="Query",   icon="🔍")
+    st.page_link("pages/3_Metrics.py",label="Metrics", icon="📊")
     st.markdown("---")
     if st.button("Sign Out"):
         st.session_state.logged_in=False; st.session_state.username=""; st.rerun()

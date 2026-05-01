@@ -78,9 +78,9 @@ with st.sidebar:
     </div>
     <div style="font-size:0.72rem;color:#3A4A58;margin:0.5rem 0 1rem;">Signed in as <strong style="color:#C8B47A;">{username}</strong></div>""", unsafe_allow_html=True)
     st.markdown("---")
-    st.page_link("pages/1_Home.py",   label="Home",    icon="○")
-    st.page_link("pages/2_Query.py",  label="Query",   icon="◇")
-    st.page_link("pages/3_Metrics.py",label="Metrics", icon="△")
+    st.page_link("pages/1_Home.py",   label="Home",    icon="🏠")
+    st.page_link("pages/2_Query.py",  label="Query",   icon="🔍")
+    st.page_link("pages/3_Metrics.py",label="Metrics", icon="📊")
     st.markdown("---")
     if st.button("Sign Out"):
         st.session_state.logged_in=False; st.session_state.username=""
