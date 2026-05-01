@@ -147,9 +147,9 @@ with st.sidebar:
     if groq_key: os.environ["GROQ_API_KEY"] = groq_key
     st.markdown("---")
     if st.button("Go to Query  →"):
-        st.switch_page("pages/2_Query.py")
+        st.switch_page("2_Query.py")
     if st.button("View Metrics  →"):
-        st.switch_page("pages/3_Metrics.py")
+        st.switch_page("3_Metrics.py")
     st.markdown("---")
     if st.button("Sign Out"):
         st.session_state.logged_in = False
@@ -255,5 +255,5 @@ for i, q in enumerate(samples):
     with cols[i % 3]:
         if st.button(q, key=f"home_q{i}", use_container_width=True):
             st.session_state["prefill_query"] = q
-            st.switch_page("pages/2_Query.py")
+            st.switch_page("2_Query.py")
 st.markdown('</div>', unsafe_allow_html=True)

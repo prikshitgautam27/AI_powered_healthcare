@@ -352,7 +352,7 @@ if st.session_state.auth_tab == "login":
             st.session_state.logged_in = True
             st.session_state.username  = username
             st.session_state.auth_error = ""
-            st.switch_page("pages/1_Home.py")
+            st.switch_page("1_Home.py")
         st.rerun()
     st.markdown("""
     <div class="demo-hint">
