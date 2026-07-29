@@ -136,9 +136,9 @@ with st.sidebar:
 
     if st.session_state.logged_in:
         st.markdown(f"<div style='font-size:0.78rem;color:#2D6A4F;font-weight:600;margin-bottom:1rem;'>Signed in as {st.session_state.username}</div>", unsafe_allow_html=True)
-        st.page_link("pages/1_Home.py",    label="Home",    icon="🏠")
-        st.page_link("pages/2_Query.py",   label="Query",   icon="🔍")
-        st.page_link("pages/3_Metrics.py", label="Metrics", icon="📊")
+        st.page_link("pages/1_Home.py",    label="Home")
+        st.page_link("pages/2_Query.py",   label="Query")
+        st.page_link("pages/3_Metrics.py", label="Metrics")
         st.markdown("---")
         if st.button("Sign Out"):
             st.session_state.logged_in=False; st.session_state.username=""; st.rerun()
@@ -147,10 +147,10 @@ with st.sidebar:
         st.markdown("---")
         st.markdown("""
         <div style="font-size:0.7rem;color:#B0BDC8;line-height:1.8;">
-            <div style="margin-bottom:0.4rem;">🔍 &nbsp;Semantic search over 7,470 passages</div>
-            <div style="margin-bottom:0.4rem;">⚡ &nbsp;Sub-2s responses via Groq</div>
-            <div style="margin-bottom:0.4rem;">📖 &nbsp;Gale Encyclopedia of Medicine</div>
-            <div>🔒 &nbsp;Secure, session-based login</div>
+            <div style="margin-bottom:0.4rem;"> &nbsp;Semantic search over 7,470 passages</div>
+            <div style="margin-bottom:0.4rem;"> &nbsp;Sub-2s responses via Groq</div>
+            <div style="margin-bottom:0.4rem;">&nbsp;Gale Encyclopedia of Medicine</div>
+            <div> &nbsp;Secure, session-based login</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -167,9 +167,9 @@ st.markdown("""
 if st.session_state.logged_in:
     st.markdown(f'<div class="suc">Signed in as <strong>{st.session_state.username}</strong>. Navigate below.</div>', unsafe_allow_html=True)
     st.markdown('<div class="nav-card"><div class="nav-card-title">Where would you like to go?</div>', unsafe_allow_html=True)
-    st.page_link("pages/1_Home.py",    label="Home — Dashboard",       icon="🏠")
-    st.page_link("pages/2_Query.py",   label="Query — Ask a question",  icon="🔍")
-    st.page_link("pages/3_Metrics.py", label="Metrics — Performance",   icon="📊")
+    st.page_link("pages/1_Home.py",    label="Home — Dashboard" )
+    st.page_link("pages/2_Query.py",   label="Query — Ask a question" )
+    st.page_link("pages/3_Metrics.py", label="Metrics — Performance" )
     st.markdown('</div>', unsafe_allow_html=True)
     st.stop()
 
