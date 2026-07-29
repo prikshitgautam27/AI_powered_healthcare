@@ -10,7 +10,7 @@ except: pass
 
 if not st.session_state.get("logged_in"):
     st.warning("Please sign in first.")
-    st.page_link("app.py", label="Go to Login", icon="🔐")
+    st.page_link("app.py", label="Go to Login")
     st.stop()
 
 st.markdown("""
@@ -80,9 +80,9 @@ with st.sidebar:
     <div style="font-size:0.75rem;color:#8A9BB0;margin-bottom:0.8rem;">Signed in as <strong style="color:#2D6A4F;">{username}</strong></div>
     """, unsafe_allow_html=True)
     st.markdown("---")
-    st.page_link("pages/1_Home.py",    label="Home",    icon="🏠")
-    st.page_link("pages/2_Query.py",   label="Query",   icon="🔍")
-    st.page_link("pages/3_Metrics.py", label="Metrics", icon="📊")
+    st.page_link("pages/1_Home.py",    label="Home")
+    st.page_link("pages/2_Query.py",   label="Query")
+    st.page_link("pages/3_Metrics.py", label="Metrics")
     st.markdown("---")
 
     st.markdown("<div style='font-size:0.62rem;color:#A0ADB8;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;font-weight:500;'>Health Parameters</div>", unsafe_allow_html=True)
