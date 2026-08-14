@@ -47,7 +47,7 @@ streamlit run app.py
 | Component | Model |
 |-----------|-------|
 | Embeddings | `sentence-transformers/all-MiniLM-L6-v2` |
-| LLM | `google/flan-t5-large` |
+| LLM | `Groq api-> llama-3.1-8b-instant` |
 | Vector DB | `FAISS` (local, no server needed) |
 | PDF Parsing | `PyMuPDF (fitz)` |
 
