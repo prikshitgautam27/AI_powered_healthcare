@@ -9,7 +9,7 @@ from groq import Groq
 from vector_store import retrieve_context
 
 # ── Config ────────────────────────────────────────────────
-GROQ_MODEL  = "llama-3.3-70b-versatile"   # ✅ Updated: llama-3.1-8b-instant is no longer free
+GROQ_MODEL  = "openai/gpt-oss-120b"   # ✅ Updated: llama-3.3-70b-versatile/llama-3.1-8b-instant moved to Enterprise-only tier
 MAX_TOKENS  = 512
 
 SYSTEM_PROMPT = """You are a helpful medical assistant trained on the Gale Encyclopedia of Medicine.
