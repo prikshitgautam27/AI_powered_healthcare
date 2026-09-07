@@ -46,7 +46,7 @@ def generate_answer(question: str, vectorstore, k: int = 4) -> dict:
         answer  : str
         sources : list[str]
     """
-    # 1. Retrieve relevant chunks
+    # 1. Retrieve relevant chunks retrival is imp
     context_chunks = retrieve_context(question, vectorstore, k=k)
 
     # 2. Build prompt
