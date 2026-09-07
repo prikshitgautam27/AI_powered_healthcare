@@ -9,7 +9,7 @@ from groq import Groq
 from vector_store import retrieve_context
 
 # ── Config ────────────────────────────────────────────────
-GROQ_MODEL  = "llama-3.3-70b-versatile"   # Free, fast, high quality
+GROQ_MODEL  = "openai/gpt-oss-120b"   # Free, fast, high quality
 MAX_TOKENS  = 512
 
 SYSTEM_PROMPT = """You are a helpful medical assistant trained on the Gale Encyclopedia of Medicine.
