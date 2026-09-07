@@ -1,6 +1,6 @@
 """
 rag_pipeline.py  - Groq API version (fast, free, cloud-ready)
-Uses llama3-8b-8192 via Groq for answer generation.
+Uses llama-3.3-70b-versatile via Groq for answer generation.
 No local model download needed!
 """
 
@@ -9,7 +9,7 @@ from groq import Groq
 from vector_store import retrieve_context
 
 # ── Config ────────────────────────────────────────────────
-GROQ_MODEL  = "llama-3.1-8b-instant"   # Free, fast, high quality
+GROQ_MODEL  = "llama-3.3-70b-versatile"   # ✅ Updated: llama-3.1-8b-instant is no longer free
 MAX_TOKENS  = 512
 
 SYSTEM_PROMPT = """You are a helpful medical assistant trained on the Gale Encyclopedia of Medicine.
@@ -61,7 +61,7 @@ def generate_answer(question: str, vectorstore, k: int = 4) -> dict:
             {"role": "user",   "content": prompt},
         ],
         max_tokens=MAX_TOKENS,
-        temperature=0.2,   # low temp = more factual
+        temperature=0.2,
     )
 
     answer = response.choices[0].message.content.strip()
