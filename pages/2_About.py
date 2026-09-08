@@ -6,17 +6,28 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
 html,body,[data-testid="stAppViewContainer"]{background:#F8F6F2!important;font-family:'Inter',sans-serif;color:#1A1A2E;}
-#MainMenu,footer,header{display:none!important;}
+#MainMenu,footer{display:none!important;}
+[data-testid="stToolbar"]{visibility:hidden!important;}
+[data-testid="stHeader"]{background:transparent!important;height:3rem!important;}
+[data-testid="collapsedControl"]{display:flex!important;visibility:visible!important;opacity:1!important;}
+[data-testid="collapsedControl"] svg{fill:#1B4332!important;}
+[data-testid="baseButton-headerNoPadding"] svg{fill:#1B4332!important;}
+
 [data-testid="stSidebar"]{background:#FFFFFF!important;border-right:1px solid #EDE8E0!important;}
-[data-testid="stSidebar"] *{color:#1A1A2E!important;}
+[data-testid="stSidebar"] *{color:#14231C!important;}
 [data-testid="stSidebar"] hr{border-color:#EDE8E0!important;}
-[data-testid="stPageLink"] a{color:#1B4332!important;font-size:0.82rem!important;font-weight:500!important;}
+[data-testid="stPageLink"] a{color:#14522F!important;font-size:0.88rem!important;font-weight:600!important;}
+
+p,span,div,label,li{color:#1A1A2E;}
+[data-testid="stMarkdownContainer"] p,[data-testid="stMarkdownContainer"] li{color:#1A1A2E!important;}
+.stTabs [data-baseweb="tab"] p{color:#6A7A8A!important;font-weight:600!important;}
+.stTabs [aria-selected="true"] p{color:#14522F!important;}
 [data-testid="block-container"]{padding:2rem 2.5rem!important;max-width:1150px;margin:0 auto;}
 
 .page-hdr{padding:0.5rem 0 1.5rem;border-bottom:1px solid #EDE8E0;margin-bottom:1.8rem;}
 .page-eyebrow{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#2D6A4F;margin-bottom:0.4rem;font-weight:500;}
 .page-title{font-family:'Playfair Display',serif;font-size:1.9rem;color:#1A1A2E;font-weight:400;}
-.page-sub{font-size:0.8rem;color:#8A9BB0;margin-top:0.3rem;}
+.page-sub{font-size:0.8rem;color:#52625C;margin-top:0.3rem;}
 
 .sec-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:#1A1A2E;margin:1.6rem 0 0.6rem;}
 .sec-desc{font-size:0.85rem;color:#6A7A8A;line-height:1.7;margin-bottom:1.2rem;max-width:760px;}
@@ -26,14 +37,14 @@ html,body,[data-testid="stAppViewContainer"]{background:#F8F6F2!important;font-f
 .ac:hover{border-color:#95D5B2;box-shadow:0 4px 16px rgba(27,67,50,0.08);}
 .ac-step{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:#2D6A4F;margin-bottom:0.4rem;font-weight:600;}
 .ac-name{font-family:'Playfair Display',serif;font-size:1rem;color:#1A1A2E;margin-bottom:0.4rem;}
-.ac-detail{font-size:0.72rem;color:#8A9BB0;line-height:1.6;}
+.ac-detail{font-size:0.72rem;color:#52625C;line-height:1.6;}
 
 .flow{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;margin:1rem 0 1.8rem;}
 .flow-node{background:#FFFFFF;border:1px solid #EDE8E0;border-radius:10px;padding:0.7rem 1.1rem;font-size:0.76rem;font-weight:500;color:#1B4332;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
-.flow-arrow{color:#B0BDC8;font-size:1rem;}
+.flow-arrow{color:#6A7A8A;font-size:1rem;}
 
 .model-table{width:100%;border-collapse:collapse;font-size:0.82rem;background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04);margin-bottom:1.5rem;}
-.model-table th{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#A0ADB8;padding:0.8rem 1rem;text-align:left;border-bottom:1px solid #EDE8E0;font-weight:500;background:#FAFAF8;}
+.model-table th{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#5C6B66;padding:0.8rem 1rem;text-align:left;border-bottom:1px solid #EDE8E0;font-weight:500;background:#FAFAF8;}
 .model-table td{padding:0.75rem 1rem;border-bottom:1px solid #F5F2EE;color:#4A5568;}
 .model-table tr:last-child td{border-bottom:none;}
 .model-table tr:hover td{background:#F8FFF8;}
@@ -43,7 +54,7 @@ html,body,[data-testid="stAppViewContainer"]{background:#F8F6F2!important;font-f
 .design-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:0.5rem;}
 .dc{background:#FFFFFF;border:1px solid #EDE8E0;border-radius:12px;padding:1.4rem;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
 .dc-title{font-family:'Playfair Display',serif;font-size:1.02rem;color:#1A1A2E;margin-bottom:0.5rem;}
-.dc-detail{font-size:0.78rem;color:#8A9BB0;line-height:1.65;}
+.dc-detail{font-size:0.78rem;color:#52625C;line-height:1.65;}
 .swatch-row{display:flex;gap:0.5rem;margin-top:0.7rem;}
 .swatch{width:28px;height:28px;border-radius:6px;border:1px solid rgba(0,0,0,0.06);}
 
@@ -52,10 +63,10 @@ html,body,[data-testid="stAppViewContainer"]{background:#F8F6F2!important;font-f
 .nc:hover{border-color:#95D5B2;transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,67,50,0.1);}
 .nc-tag{font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:#2D6A4F;margin-bottom:0.5rem;font-weight:600;}
 .nc-title{font-family:'Playfair Display',serif;font-size:1.02rem;color:#1A1A2E;margin-bottom:0.5rem;}
-.nc-detail{font-size:0.78rem;color:#8A9BB0;line-height:1.65;}
+.nc-detail{font-size:0.78rem;color:#52625C;line-height:1.65;}
 
 .stTabs [data-baseweb="tab-list"]{gap:1.5rem;border-bottom:1px solid #EDE8E0;}
-.stTabs [data-baseweb="tab"]{font-size:0.8rem;font-weight:500;color:#A0ADB8;padding:0.6rem 0;}
+.stTabs [data-baseweb="tab"]{font-size:0.8rem;font-weight:500;color:#5C6B66;padding:0.6rem 0;}
 .stTabs [aria-selected="true"]{color:#1B4332!important;border-bottom-color:#1B4332!important;}
 </style>
 """, unsafe_allow_html=True)
@@ -64,7 +75,7 @@ with st.sidebar:
     st.markdown("""
     <div style="padding:1.2rem 0 0.8rem;">
         <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#1A1A2E;">MediQuery</div>
-        <div style="font-size:0.62rem;color:#A0ADB8;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.2rem;">About the Project</div>
+        <div style="font-size:0.62rem;color:#5C6B66;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.2rem;">About the Project</div>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("---")
@@ -186,4 +197,4 @@ with tab_novelty:
     """, unsafe_allow_html=True)
 
 st.markdown("---")
-st.markdown('<div style="text-align:center;font-size:0.72rem;color:#B0BDC8;">MediQuery · Portfolio project · Built with Streamlit, FAISS, and Groq</div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align:center;font-size:0.72rem;color:#6A7A8A;">MediQuery · Portfolio project · Built with Streamlit, FAISS, and Groq</div>', unsafe_allow_html=True)
