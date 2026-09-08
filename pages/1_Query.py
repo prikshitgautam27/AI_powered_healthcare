@@ -3,15 +3,10 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 
-st.set_page_config(page_title="MediQuery — Query", page_icon="M", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="MediQuery — Live Demo", page_icon="M", layout="wide", initial_sidebar_state="expanded")
 
 try: os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 except: pass
-
-if not st.session_state.get("logged_in"):
-    st.warning("Please sign in first.")
-    st.page_link("app.py", label="Go to Login")
-    st.stop()
 
 st.markdown("""
 <style>
@@ -21,7 +16,6 @@ html,body,[data-testid="stAppViewContainer"]{background:#F8F6F2!important;font-f
 [data-testid="stSidebar"]{background:#FFFFFF!important;border-right:1px solid #EDE8E0!important;}
 [data-testid="stSidebar"] *{color:#1A1A2E!important;}
 [data-testid="stSidebar"] label{color:#8A9BB0!important;font-size:0.68rem!important;letter-spacing:0.1em!important;text-transform:uppercase!important;font-weight:500!important;}
-[data-testid="stSidebar"] input{background:#F8F6F2!important;border:1.5px solid #E2DDD6!important;border-radius:8px!important;color:#1A1A2E!important;}
 [data-testid="stSidebar"] hr{border-color:#EDE8E0!important;}
 [data-testid="stSidebar"] .stButton button{background:#1B4332!important;border:none!important;color:#FFFFFF!important;border-radius:8px!important;font-size:0.72rem!important;letter-spacing:0.1em!important;text-transform:uppercase!important;width:100%!important;margin-bottom:0.3rem!important;}
 [data-testid="stPageLink"] a{color:#1B4332!important;font-size:0.82rem!important;font-weight:500!important;}
@@ -69,55 +63,44 @@ def load_vs():
     from vector_store import load_vectorstore
     return load_vectorstore()
 
-username = st.session_state.get("username","User")
-
 with st.sidebar:
-    st.markdown(f"""
+    st.markdown("""
     <div style="padding:1.2rem 0 0.8rem;">
         <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#1A1A2E;">MediQuery</div>
-        <div style="font-size:0.62rem;color:#A0ADB8;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.2rem;">Query Engine</div>
+        <div style="font-size:0.62rem;color:#A0ADB8;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.2rem;">Live Demo</div>
     </div>
-    <div style="font-size:0.75rem;color:#8A9BB0;margin-bottom:0.8rem;">Signed in as <strong style="color:#2D6A4F;">{username}</strong></div>
     """, unsafe_allow_html=True)
     st.markdown("---")
-    st.page_link("pages/1_Home.py",    label="Home")
-    st.page_link("pages/2_Query.py",   label="Query")
-    st.page_link("pages/3_Metrics.py", label="Metrics")
+    st.page_link("app.py",             label="Home")
+    st.page_link("pages/1_Query.py",   label="Live Demo")
+    st.page_link("pages/2_About.py",   label="About the Project")
     st.markdown("---")
 
-    st.markdown("<div style='font-size:0.62rem;color:#A0ADB8;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;font-weight:500;'>Health Parameters</div>", unsafe_allow_html=True)
-    age    = st.number_input("Age (years)", 1, 120, 30)
-    weight = st.number_input("Weight (kg)", 10, 300, 70)
-    height = st.number_input("Height (cm)", 50, 250, 170)
-    bmi    = round(weight/((height/100)**2),1)
-    bmi_s  = "Underweight" if bmi<18.5 else "Normal" if bmi<25 else "Overweight" if bmi<30 else "Obese"
-    bmi_c  = "#16A34A" if bmi_s=="Normal" else "#D97706" if bmi_s in ["Underweight","Overweight"] else "#DC2626"
-    st.markdown(f'<div class="param-card"><div class="pn">BMI</div><div class="pv" style="color:{bmi_c}">{bmi}</div><div class="pr">{bmi_s}</div></div>', unsafe_allow_html=True)
-
-    sys_bp = st.number_input("Systolic BP (mmHg)", 60, 220, 120)
-    dia_bp = st.number_input("Diastolic BP (mmHg)", 40, 140, 80)
-    bp_s   = "Normal" if sys_bp<120 and dia_bp<80 else "Elevated" if sys_bp<130 else "High"
-    bp_c   = "#16A34A" if bp_s=="Normal" else "#D97706" if bp_s=="Elevated" else "#DC2626"
-    st.markdown(f'<div class="param-card"><div class="pn">Blood Pressure</div><div class="pv" style="color:{bp_c}">{sys_bp}/{dia_bp}</div><div class="pr">{bp_s}</div></div>', unsafe_allow_html=True)
-
-    glucose = st.number_input("Blood Glucose (mg/dL)", 50, 500, 90)
-    gl_s    = "Normal" if glucose<100 else "Pre-diabetic" if glucose<126 else "Diabetic range"
-    gl_c    = "#16A34A" if gl_s=="Normal" else "#D97706" if gl_s=="Pre-diabetic" else "#DC2626"
-    st.markdown(f'<div class="param-card"><div class="pn">Blood Glucose</div><div class="pv" style="color:{gl_c}">{glucose}</div><div class="pr">{gl_s}</div></div>', unsafe_allow_html=True)
-
-    st.markdown("---")
+    st.markdown("<div style='font-size:0.62rem;color:#A0ADB8;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;font-weight:500;'>Retrieval Settings</div>", unsafe_allow_html=True)
     num_chunks   = st.slider("Context passages (k)", 1, 8, 4)
     resp_style   = st.selectbox("Response style", ["Detailed","Concise","Layman terms"])
     show_sources = st.toggle("Show source passages", value=True)
+
+    with st.expander("Optional: personalize with vitals"):
+        age    = st.number_input("Age (years)", 1, 120, 30)
+        weight = st.number_input("Weight (kg)", 10, 300, 70)
+        height = st.number_input("Height (cm)", 50, 250, 170)
+        bmi    = round(weight/((height/100)**2),1)
+        bmi_s  = "Underweight" if bmi<18.5 else "Normal" if bmi<25 else "Overweight" if bmi<30 else "Obese"
+        sys_bp = st.number_input("Systolic BP (mmHg)", 60, 220, 120)
+        dia_bp = st.number_input("Diastolic BP (mmHg)", 40, 140, 80)
+        bp_s   = "Normal" if sys_bp<120 and dia_bp<80 else "Elevated" if sys_bp<130 else "High"
+        glucose = st.number_input("Blood Glucose (mg/dL)", 50, 500, 90)
+        gl_s    = "Normal" if glucose<100 else "Pre-diabetic" if glucose<126 else "Diabetic range"
+        use_vitals = st.checkbox("Include vitals in query context", value=False)
+
     st.markdown("---")
     if st.button("Clear chat"):
-        st.session_state.messages=[]; st.session_state.query_metrics=[]; st.rerun()
-    if st.button("Sign Out"):
-        st.session_state.logged_in=False; st.session_state.username=""; st.rerun()
+        st.session_state.messages=[]; st.rerun()
 
 st.markdown("""
 <div class="page-hdr">
-    <div class="page-eyebrow">Gale Encyclopedia · FAISS · Llama 3.1 via Groq</div>
+    <div class="page-eyebrow">Gale Encyclopedia · FAISS · Groq-hosted LLM</div>
     <div class="page-title">Medical Query Engine</div>
 </div>""", unsafe_allow_html=True)
 
@@ -135,14 +118,13 @@ st.markdown("""
     <div class="dot"></div>
     <span style="font-weight:600;">Knowledge base active</span>
     <div class="sep"></div><span>7,470 passages indexed</span>
-    <div class="sep"></div><span>Llama 3.1 · Groq</span>
+    <div class="sep"></div><span>Groq-hosted LLM</span>
     <div class="sep"></div><span>FAISS retrieval</span>
 </div>
-<div class="disc"><strong>Medical Disclaimer</strong> — For educational purposes only. Always consult a qualified healthcare professional for personal medical decisions.</div>
+<div class="disc"><strong>Portfolio Demo</strong> — For educational purposes only. Not a substitute for professional medical advice.</div>
 """, unsafe_allow_html=True)
 
-if "messages"      not in st.session_state: st.session_state.messages=[]
-if "query_metrics" not in st.session_state: st.session_state.query_metrics=[]
+if "messages" not in st.session_state: st.session_state.messages=[]
 
 prefill = st.session_state.pop("prefill_query", None)
 
@@ -170,8 +152,11 @@ if st.session_state.messages:
 user_input = st.chat_input("Ask a medical question...") or prefill
 
 if user_input:
-    health_ctx = (f"Patient: Age {age}, BMI {bmi} ({bmi_s}), BP {sys_bp}/{dia_bp} ({bp_s}), "
-                  f"Glucose {glucose} mg/dL ({gl_s}). Style: {resp_style}.")
+    if 'use_vitals' in dir() and use_vitals:
+        health_ctx = (f"Patient: Age {age}, BMI {bmi} ({bmi_s}), BP {sys_bp}/{dia_bp} ({bp_s}), "
+                      f"Glucose {glucose} mg/dL ({gl_s}). Style: {resp_style}.\n\n")
+    else:
+        health_ctx = f"Style: {resp_style}.\n\n"
     st.session_state.messages.append({"role":"user","content":user_input})
     with st.spinner("Searching and generating..."):
         from rag_pipeline import generate_answer
@@ -180,12 +165,11 @@ if user_input:
         retrieve_context(user_input,vectorstore,k=num_chunks)
         retrieval_ms=int((time.time()-t0)*1000)
         t1=time.time()
-        result=generate_answer(question=f"{health_ctx}\n\nQuestion: {user_input}",vectorstore=vectorstore,k=num_chunks)
+        result=generate_answer(question=f"{health_ctx}Question: {user_input}",vectorstore=vectorstore,k=num_chunks)
         gen_ms=int((time.time()-t1)*1000)
     answer=result["answer"]; sources=result["sources"]
     relevance=f"{min(95,70+num_chunks*4)}%"
     st.session_state.messages.append({"role":"assistant","content":answer,"sources":sources,"retrieval_ms":retrieval_ms,"gen_ms":gen_ms,"k_used":num_chunks,"relevance":relevance})
-    st.session_state.query_metrics.append({"question":user_input,"retrieval_ms":retrieval_ms,"gen_ms":gen_ms,"total_ms":retrieval_ms+gen_ms,"relevance":relevance,"k":num_chunks})
     st.rerun()
 
 st.markdown("---")
