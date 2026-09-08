@@ -26,34 +26,15 @@ html, body, [data-testid="stAppViewContainer"] {
     font-family: 'Inter', sans-serif;
     color: #1A1A2E;
 }
-#MainMenu, footer { display: none !important; }
-[data-testid="stToolbar"] { visibility: hidden !important; }
-[data-testid="stHeader"] { background: transparent !important; height: 3rem !important; }
-/* Keep the sidebar collapse/expand arrow visible and legible */
-[data-testid="collapsedControl"] { display: flex !important; visibility: visible !important; opacity: 1 !important; }
-[data-testid="collapsedControl"] svg { fill: #1B4332 !important; }
-[data-testid="baseButton-headerNoPadding"] svg { fill: #1B4332 !important; }
+#MainMenu, footer, header, [data-testid="stToolbar"] { display: none !important; }
 
 [data-testid="stSidebar"] { background: #FFFFFF !important; border-right: 1px solid #EDE8E0 !important; }
-[data-testid="stSidebar"] * { color: #14231C !important; }
+[data-testid="stSidebar"] * { color: #1A1A2E !important; }
 [data-testid="stSidebar"] hr { border-color: #EDE8E0 !important; }
 [data-testid="stPageLink"] a, [data-testid="stPageLink"] a span, [data-testid="stPageLink"] p {
-    color: #14522F !important; font-size: 0.9rem !important; font-weight: 600 !important; text-decoration: none !important;
+    color: #1B4332 !important; font-size: 0.88rem !important; font-weight: 500 !important; text-decoration: none !important;
 }
 [data-testid="stPageLink"]:hover a { color: #2D6A4F !important; }
-
-/* Global text-contrast fixes — avoid Streamlit's default light-gray fallback */
-p, span, div, label, li { color: #1A1A2E; }
-[data-testid="stMarkdownContainer"] p, [data-testid="stMarkdownContainer"] li { color: #1A1A2E !important; }
-[data-testid="stWidgetLabel"] p { color: #33413D !important; font-weight: 600 !important; }
-.stSelectbox div[data-baseweb="select"] * { color: #1A1A2E !important; }
-.stSelectbox div[data-baseweb="select"] { background: #FFFFFF !important; border-color: #C9D6CE !important; }
-input, textarea { color: #1A1A2E !important; }
-[data-testid="stExpander"] summary, [data-testid="stExpander"] summary p { color: #14522F !important; font-weight: 600 !important; }
-[data-testid="stExpander"] { border-color: #D9E4DD !important; }
-.stTabs [data-baseweb="tab"] p { color: #6A7A8A !important; font-weight: 600 !important; }
-.stTabs [aria-selected="true"] p { color: #14522F !important; }
-[data-testid="stMetricValue"], [data-testid="stMetricLabel"] { color: #1A1A2E !important; }
 
 [data-testid="block-container"] { padding: 2rem 2.5rem !important; max-width: 1100px; margin: 0 auto; }
 
@@ -74,9 +55,9 @@ input, textarea { color: #1A1A2E !important; }
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.6rem;}
 .kpi{background:#FFFFFF;border:1px solid #EDE8E0;border-radius:12px;padding:1.3rem 1.5rem;transition:all 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
 .kpi:hover{border-color:#B7E4C7;transform:translateY(-2px);box-shadow:0 6px 20px rgba(27,67,50,0.08);}
-.kpi-label{font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#5C6B66;margin-bottom:0.4rem;font-weight:500;}
+.kpi-label{font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#A0ADB8;margin-bottom:0.4rem;font-weight:500;}
 .kpi-value{font-family:'Playfair Display',serif;font-size:1.9rem;color:#1A1A2E;font-weight:400;line-height:1;}
-.kpi-sub{font-size:0.68rem;color:#6A7A8A;margin-top:0.3rem;}
+.kpi-sub{font-size:0.68rem;color:#B0BDC8;margin-top:0.3rem;}
 .kpi-accent{color:#2D6A4F;}
 
 .fc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1rem;}
@@ -84,16 +65,16 @@ input, textarea { color: #1A1A2E !important; }
 .fc:hover{border-color:#95D5B2;transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,67,50,0.1);}
 .fc-num{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:#2D6A4F;margin-bottom:0.5rem;font-weight:600;}
 .fc-title{font-family:'Playfair Display',serif;font-size:1.15rem;color:#1A1A2E;margin-bottom:0.5rem;}
-.fc-desc{font-size:0.8rem;color:#52625C;line-height:1.65;}
+.fc-desc{font-size:0.8rem;color:#8A9BB0;line-height:1.65;}
 
 .sec-hdr{display:flex;align-items:center;gap:1rem;margin:1.8rem 0 1rem;}
-.sec-title{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:#5C6B66;white-space:nowrap;font-weight:500;}
+.sec-title{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:#A0ADB8;white-space:nowrap;font-weight:500;}
 .sec-line{flex:1;height:1px;background:#EDE8E0;}
 
 .stButton button{background:#1B4332!important;border:none!important;color:#FFFFFF!important;border-radius:8px!important;font-family:'Inter',sans-serif!important;font-size:0.78rem!important;font-weight:500!important;letter-spacing:0.05em!important;text-transform:uppercase!important;padding:0.8rem 1.2rem!important;transition:all 0.2s!important;box-shadow:0 2px 8px rgba(27,67,50,0.25)!important;}
 .stButton button:hover{background:#2D6A4F!important;transform:translateY(-1px)!important;}
 
-.footer-note{text-align:center;font-size:0.72rem;color:#6A7A8A;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #EDE8E0;}
+.footer-note{text-align:center;font-size:0.72rem;color:#B0BDC8;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #EDE8E0;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -101,7 +82,7 @@ with st.sidebar:
     st.markdown("""
     <div style="padding:1.2rem 0 0.8rem;">
         <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#1A1A2E;font-weight:400;">MediQuery</div>
-        <div style="font-size:0.62rem;color:#5C6B66;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.2rem;">AI Health Assistant</div>
+        <div style="font-size:0.62rem;color:#A0ADB8;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.2rem;">AI Health Assistant</div>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("---")
@@ -110,7 +91,7 @@ with st.sidebar:
     st.page_link("pages/2_About.py",   label="About the Project")
     st.markdown("---")
     st.markdown("""
-    <div style="font-size:0.72rem;color:#5C6B66;line-height:1.7;">
+    <div style="font-size:0.72rem;color:#A0ADB8;line-height:1.7;">
         Retrieval-Augmented Generation over the Gale Encyclopedia of Medicine.<br><br>
         Built with FAISS, Sentence-Transformers, and Groq-hosted LLMs.
     </div>

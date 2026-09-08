@@ -12,28 +12,13 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
 html,body,[data-testid="stAppViewContainer"]{background:#F8F6F2!important;font-family:'Inter',sans-serif;color:#1A1A2E;}
-#MainMenu,footer{display:none!important;}
-[data-testid="stToolbar"]{visibility:hidden!important;}
-[data-testid="stHeader"]{background:transparent!important;height:3rem!important;}
-[data-testid="collapsedControl"]{display:flex!important;visibility:visible!important;opacity:1!important;}
-[data-testid="collapsedControl"] svg{fill:#1B4332!important;}
-[data-testid="baseButton-headerNoPadding"] svg{fill:#1B4332!important;}
-
+#MainMenu,footer,header{display:none!important;}
 [data-testid="stSidebar"]{background:#FFFFFF!important;border-right:1px solid #EDE8E0!important;}
-[data-testid="stSidebar"] *{color:#14231C!important;}
-[data-testid="stSidebar"] label{color:#5C6B66!important;font-size:0.68rem!important;letter-spacing:0.1em!important;text-transform:uppercase!important;font-weight:600!important;}
+[data-testid="stSidebar"] *{color:#1A1A2E!important;}
+[data-testid="stSidebar"] label{color:#8A9BB0!important;font-size:0.68rem!important;letter-spacing:0.1em!important;text-transform:uppercase!important;font-weight:500!important;}
 [data-testid="stSidebar"] hr{border-color:#EDE8E0!important;}
 [data-testid="stSidebar"] .stButton button{background:#1B4332!important;border:none!important;color:#FFFFFF!important;border-radius:8px!important;font-size:0.72rem!important;letter-spacing:0.1em!important;text-transform:uppercase!important;width:100%!important;margin-bottom:0.3rem!important;}
-[data-testid="stPageLink"] a{color:#14522F!important;font-size:0.88rem!important;font-weight:600!important;}
-
-p,span,div,label,li{color:#1A1A2E;}
-[data-testid="stMarkdownContainer"] p,[data-testid="stMarkdownContainer"] li{color:#1A1A2E!important;}
-[data-testid="stWidgetLabel"] p{color:#33413D!important;font-weight:600!important;}
-.stSelectbox div[data-baseweb="select"] *{color:#1A1A2E!important;}
-.stSelectbox div[data-baseweb="select"]{background:#FFFFFF!important;border-color:#C9D6CE!important;}
-input,textarea{color:#1A1A2E!important;}
-[data-testid="stExpander"] summary,[data-testid="stExpander"] summary p{color:#14522F!important;font-weight:600!important;}
-[data-testid="stExpander"]{border-color:#D9E4DD!important;}
+[data-testid="stPageLink"] a{color:#1B4332!important;font-size:0.82rem!important;font-weight:500!important;}
 [data-testid="block-container"]{padding:2rem 2.5rem!important;max-width:860px;margin:0 auto;}
 
 .page-hdr{padding:0.5rem 0 1.5rem;border-bottom:1px solid #EDE8E0;margin-bottom:1.5rem;}
@@ -67,9 +52,9 @@ input,textarea{color:#1A1A2E!important;}
 .stButton button:hover{border-color:#2D6A4F!important;background:#F0FDF4!important;}
 
 .param-card{background:#FFFFFF;border:1px solid #EDE8E0;border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.5rem;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
-.pn{font-size:0.6rem;color:#5C6B66;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem;font-weight:500;}
+.pn{font-size:0.6rem;color:#A0ADB8;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem;font-weight:500;}
 .pv{font-family:'Playfair Display',serif;font-size:1.05rem;color:#1A1A2E;}
-.pr{font-size:0.62rem;color:#6A7A8A;margin-top:0.1rem;}
+.pr{font-size:0.62rem;color:#B0BDC8;margin-top:0.1rem;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -82,7 +67,7 @@ with st.sidebar:
     st.markdown("""
     <div style="padding:1.2rem 0 0.8rem;">
         <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#1A1A2E;">MediQuery</div>
-        <div style="font-size:0.62rem;color:#5C6B66;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.2rem;">Live Demo</div>
+        <div style="font-size:0.62rem;color:#A0ADB8;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.2rem;">Live Demo</div>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("---")
@@ -91,7 +76,7 @@ with st.sidebar:
     st.page_link("pages/2_About.py",   label="About the Project")
     st.markdown("---")
 
-    st.markdown("<div style='font-size:0.62rem;color:#5C6B66;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;font-weight:500;'>Retrieval Settings</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size:0.62rem;color:#A0ADB8;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;font-weight:500;'>Retrieval Settings</div>", unsafe_allow_html=True)
     num_chunks   = st.slider("Context passages (k)", 1, 8, 4)
     resp_style   = st.selectbox("Response style", ["Detailed","Concise","Layman terms"])
     show_sources = st.toggle("Show source passages", value=True)
@@ -188,7 +173,7 @@ if user_input:
     st.rerun()
 
 st.markdown("---")
-st.markdown('<div style="font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:#5C6B66;margin-bottom:0.8rem;font-weight:500;">Suggested queries</div>', unsafe_allow_html=True)
+st.markdown('<div style="font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:#A0ADB8;margin-bottom:0.8rem;font-weight:500;">Suggested queries</div>', unsafe_allow_html=True)
 samples=["Early warning signs of Type 2 Diabetes","How is hypertension managed?","What triggers an asthma attack?","Stages of Alzheimer's disease","Risk factors for heart disease","What causes kidney stones?","Symptoms of thyroid disorders","Treatment for tuberculosis","High cholesterol effects on heart"]
 cols=st.columns(3)
 for i,q in enumerate(samples):
