@@ -1,14 +1,36 @@
-name: Ping Streamlit App
+name: Keep Streamlit App Awake
 
 on:
   schedule:
-    - cron: '0 0,3,6,9,12,15,18,21 * * *'  
-    - cron: '30 1,4,7,10,13,16,19,22 * * *'
-  workflow_dispatch:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch:         # lets you run it manually too
+
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Send keep-alive ping
+      - name: Visit the app with a real browser
         run: |
-          curl -s -o /dev/null -w "%{http_code}\n" https://pgautam-healthcare-limited.streamlit.app/
+          pip install playwright
+          playwright install --with-deps chromium
+          python - <<'EOF'
+          from playwright.sync_api import sync_playwright
+
+          URL = "https://pgautam-healthcare-limited.streamlit.app/"   # <-- put your real URL
+
+          with sync_playwright() as p:
+              browser = p.chromium.launch()
+              page = browser.new_page()
+              page.goto(URL, timeout=60000)
+              page.wait_for_timeout(15000)
+
+              # If the app is asleep, click the wake-up button
+              btn = page.get_by_text("Yes, get this app back up!")
+              if btn.count() > 0:
+                  btn.click()
+                  page.wait_for_timeout(30000)
+                  print("App was asleep, woke it up")
+              else:
+                  print("App already awake")
+              browser.close()
+          EOF
